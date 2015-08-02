@@ -19,6 +19,14 @@
 				</div>
 			</header>
 
+			<div class="row">
+				<div class="col s12 center-align">
+					<div class="circular"></div><h5>a nifty blogging system by CocoonLabs.uk</h5>
+				</div>
+			</div>
+
+
+
         	<div class="row">
 		      <div class="col s12">
 		      	<div id="insta-blog-main">
@@ -39,17 +47,45 @@
 	        target: 'insta-blog-main',
 	        get: 'user',
 	        sortBy: 'most-recent',
-	        userId: 1173945431,
-	        accessToken: '1173945431.467ede5.24636994db8d4ec4b650436f621bdd47',
-	        clientId: '42867fb9ff1d44b4b7f2f0ad972220f2',
+	        userId: 2047912822,
+	        accessToken: '2047912822.467ede5.0d1b449b2f0b4a3995910a4c45942c6f',
+	        clientId: '93a074dea9a54cba9a3b4606b0d134ee',
 	        resolution: 'standard_resolution',
-	        template: '<article class="instablog-post"><h2 id="{{id}}" class="center-align {{id}}">{{caption}}</h2><img class="{{id}}" src="{{image}}" /><p class="flow-text">{{caption}}</p><div class="heart"><div class="inner">{{likes}}</div></div></article>',
+	        template: '<article class="instablog-post"><h2 id="{{id}}" class="center-align {{id}}">{{caption}}</h2><p class="date-author"> - Posted on: {{model.created_time}} by {{model.user.full_name}} - </p><img class="{{id}}" src="{{image}}" /><p class="flow-text">{{caption}}</p><div class="heart"><div class="inner">{{likes}}</div></div></article>',
 	        	after: function () {
 	         		$('.instablog-post h2').each(function() {
-	         			var articleTitle = $(this).text().split('!')[0];
+	         			var articleTitle = $(this).text().split('#')[0];
 	         			$(this).text(articleTitle);
     				});        	
-				}
+				},
+				filter: function(image) {
+
+		var date = new Date(image.created_time*1000);
+
+		m = date.getMonth();
+		d = date.getDate();
+		y = date.getFullYear();
+
+		var month_names = new Array ( );
+		month_names[month_names.length] = "Jan";
+		month_names[month_names.length] = "Feb";
+		month_names[month_names.length] = "Mar";
+		month_names[month_names.length] = "Apr";
+		month_names[month_names.length] = "May";
+		month_names[month_names.length] = "Jun";
+		month_names[month_names.length] = "Jul";
+		month_names[month_names.length] = "Aug";
+		month_names[month_names.length] = "Sep";
+		month_names[month_names.length] = "Oct";
+		month_names[month_names.length] = "Nov";
+		month_names[month_names.length] = "Dec";
+
+		var thetime = month_names[m] + ' ' + d + ' ' + y;
+
+		image.created_time = thetime;
+
+		return true;
+	}
 				
     	});
 

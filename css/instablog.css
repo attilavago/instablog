@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400italic,300italic);
+
 /* instablog framework styles */
 
 header {
@@ -21,11 +23,32 @@ h1 {
 	font-size: 8rem;
 }
 
+h5, .date-author {
+  font-family: 'Merriweather', serif;
+  font-style: italic;
+}
+
+.date-author {
+  text-align: center;
+}
+
 img.logo {
 	max-width: 140px;
 	margin-bottom: -30px;
   	margin-right: 20px;
 }
+
+
+.circular {
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+  background: url(../img/cocoon.png) no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  }
 
 
 
